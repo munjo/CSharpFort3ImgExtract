@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace CSharpFort3ImgExtract
         List<Fort3Img> fort3Imgs;
         DirectBitmap directBitmap;
         string imgName;
+        SaveForm saveForm;
 
         public string ImgName
         {
@@ -50,6 +52,9 @@ namespace CSharpFort3ImgExtract
             CB_imgBG.IntegralHeight = false;
             CB_imgBG.DrawMode = DrawMode.OwnerDrawFixed;
             CB_imgBG.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            saveForm = new SaveForm();
+            saveForm.SelectedPath = Directory.GetCurrentDirectory();
         }
 
         private void B_openImg_Click(object sender, EventArgs e)
@@ -106,7 +111,70 @@ namespace CSharpFort3ImgExtract
 
         private void B_save_Click(object sender, EventArgs e)
         {
+            var result =  saveForm.ShowDialog();
+            if(result == DialogResult.OK)
+            {
+                string folderName = Path.GetFileNameWithoutExtension(imgName);
 
+                string path = Path.Combine(saveForm.SelectedPath, folderName);
+
+                DirectoryInfo di = new DirectoryInfo(path);
+
+                try
+                {
+                    // 폴더가 없다면 폴더 생성
+                    if (di.Exists == false)
+                    {
+                        di.Create();
+                    }
+
+                    for (int a = 0; a < CLB_imgList.CheckedIndices.Count; a++)
+                    {
+                        int index = CLB_imgList.CheckedIndices[a];
+
+                        for (int b = 0; b < fort3Imgs[index].ImgData.Length; b++)
+                        {
+                            if((fort3Imgs[index].ImgData[b].Data?.Length ?? 0) == 0)
+                            {
+                                continue;
+                            }
+
+                            DirectBitmap directBitmap = ImageConversion.Fort3ImgDraw(fort3Imgs[index], b);
+
+                            // 저장될 이미지 제목
+                            string fileName = Path.GetFileNameWithoutExtension(imgName) + string.Format("-{0:D4}", CLB_imgList.Items[index]);
+                            // 이미지 레이어가 2개라면 뒤에 숫자를 붙여준다.
+                            if (fort3Imgs[index].ImgData[1].Data != null)
+                            {
+                                fileName += string.Format("-{0}", b);
+                            }
+                            fileName += ".png";
+
+                            //중복된 파일이 있다면
+                            if (File.Exists(Path.Combine(path, fileName)))
+                            {
+                                // 덮어쓰기가 활성화 됐을 때만
+                                if (saveForm.Overwrite == true)
+                                {
+                                    // 이미지 저장
+                                    directBitmap?.Save(Path.Combine(path, fileName), ImageFormat.Png);
+                                }
+                            }
+                            else
+                            {
+                                // 이미지 저장
+                                directBitmap?.Save(Path.Combine(path, fileName), ImageFormat.Png);
+                            }
+
+                            directBitmap?.Dispose();
+                        }
+                    }
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine(exc);
+                }
+            }
         }
 
         private void CLB_imgList_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,7 +293,7 @@ namespace CSharpFort3ImgExtract
             {
                 var color = (Color)CB_imgBG.Items[index];
 
-                PB_img.BackColor = color;
+                P_img.BackColor = color;
                 if(color == Color.Transparent)
                 {
                     PB_img.BackgroundImage = Properties.Resources.imgBackground;
