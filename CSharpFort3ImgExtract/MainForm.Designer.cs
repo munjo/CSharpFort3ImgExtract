@@ -39,9 +39,6 @@ namespace CSharpFort3ImgExtract
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.P_imgInfo = new System.Windows.Forms.Panel();
             this.L_imgSize = new System.Windows.Forms.Label();
-            this.P_rgbType = new System.Windows.Forms.Panel();
-            this.TB_rgbType = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TB_offsetY = new System.Windows.Forms.TextBox();
@@ -59,11 +56,12 @@ namespace CSharpFort3ImgExtract
             this.RTB_hex = new System.Windows.Forms.RichTextBox();
             this.CLB_imgList = new System.Windows.Forms.CheckedListBox();
             this.OFD_openImg = new System.Windows.Forms.OpenFileDialog();
+            this.TB_rgbType = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.P_imgInfo.SuspendLayout();
-            this.P_rgbType.SuspendLayout();
             this.panel1.SuspendLayout();
             this.TLP_imgLayer.SuspendLayout();
             this.P_img.SuspendLayout();
@@ -141,6 +139,7 @@ namespace CSharpFort3ImgExtract
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.P_imgInfo, 0, 2);
@@ -160,8 +159,9 @@ namespace CSharpFort3ImgExtract
             // P_imgInfo
             // 
             this.P_imgInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.P_imgInfo.Controls.Add(this.TB_rgbType);
+            this.P_imgInfo.Controls.Add(this.label3);
             this.P_imgInfo.Controls.Add(this.L_imgSize);
-            this.P_imgInfo.Controls.Add(this.P_rgbType);
             this.P_imgInfo.Controls.Add(this.label2);
             this.P_imgInfo.Controls.Add(this.label1);
             this.P_imgInfo.Controls.Add(this.TB_offsetY);
@@ -183,39 +183,6 @@ namespace CSharpFort3ImgExtract
             this.L_imgSize.TabIndex = 10;
             this.L_imgSize.Text = "0×0 px";
             this.L_imgSize.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // P_rgbType
-            // 
-            this.P_rgbType.Controls.Add(this.TB_rgbType);
-            this.P_rgbType.Controls.Add(this.label3);
-            this.P_rgbType.Location = new System.Drawing.Point(273, 0);
-            this.P_rgbType.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.P_rgbType.Name = "P_rgbType";
-            this.P_rgbType.Size = new System.Drawing.Size(166, 25);
-            this.P_rgbType.TabIndex = 25;
-            this.P_rgbType.Visible = false;
-            // 
-            // TB_rgbType
-            // 
-            this.TB_rgbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TB_rgbType.Location = new System.Drawing.Point(76, 2);
-            this.TB_rgbType.Name = "TB_rgbType";
-            this.TB_rgbType.ReadOnly = true;
-            this.TB_rgbType.Size = new System.Drawing.Size(80, 21);
-            this.TB_rgbType.TabIndex = 23;
-            this.TB_rgbType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(0, 6);
-            this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 12);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "RGB값 타입";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -404,7 +371,29 @@ namespace CSharpFort3ImgExtract
             // 
             // OFD_openImg
             // 
-            this.OFD_openImg.Filter = "포트리스3 이미지|*.i16;*.img;*.spr;*.tga";
+            this.OFD_openImg.Filter = "포트리스3 이미지|*.i16;*.img;*.spr;";
+            // 
+            // TB_rgbType
+            // 
+            this.TB_rgbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TB_rgbType.Location = new System.Drawing.Point(346, 2);
+            this.TB_rgbType.Name = "TB_rgbType";
+            this.TB_rgbType.ReadOnly = true;
+            this.TB_rgbType.Size = new System.Drawing.Size(80, 21);
+            this.TB_rgbType.TabIndex = 25;
+            this.TB_rgbType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(270, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 12);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "RGB값 타입";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
@@ -425,8 +414,6 @@ namespace CSharpFort3ImgExtract
             this.tableLayoutPanel1.ResumeLayout(false);
             this.P_imgInfo.ResumeLayout(false);
             this.P_imgInfo.PerformLayout();
-            this.P_rgbType.ResumeLayout(false);
-            this.P_rgbType.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.TLP_imgLayer.ResumeLayout(false);
@@ -452,8 +439,6 @@ namespace CSharpFort3ImgExtract
         private System.Windows.Forms.RichTextBox RTB_hex;
         private System.Windows.Forms.CheckedListBox CLB_imgList;
         private System.Windows.Forms.Panel P_imgInfo;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox TB_rgbType;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TB_offsetY;
@@ -466,10 +451,11 @@ namespace CSharpFort3ImgExtract
         private System.Windows.Forms.Panel P_img;
         private System.Windows.Forms.PictureBox PB_img;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel P_rgbType;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox CB_imgBG;
         private System.Windows.Forms.OpenFileDialog OFD_openImg;
+        private System.Windows.Forms.TextBox TB_rgbType;
+        private System.Windows.Forms.Label label3;
     }
 }
 

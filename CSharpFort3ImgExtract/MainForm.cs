@@ -44,6 +44,7 @@ namespace CSharpFort3ImgExtract
             ImgName = string.Empty;
             fort3Imgs = new List<Fort3Img>();
 
+            // 배경색 설정 콤보박스 컬러값 데이터로 바인딩
             CB_imgBG.DataSource = typeof(Color).GetProperties()
     .Where(x => x.PropertyType == typeof(Color))
     .Select(x => x.GetValue(null)).ToList();
@@ -53,6 +54,7 @@ namespace CSharpFort3ImgExtract
             CB_imgBG.DrawMode = DrawMode.OwnerDrawFixed;
             CB_imgBG.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            // 세이브 폼 세팅
             saveForm = new SaveForm();
             saveForm.SelectedPath = Directory.GetCurrentDirectory();
         }
@@ -76,7 +78,6 @@ namespace CSharpFort3ImgExtract
                 string ext = Path.GetExtension(OFD_openImg.FileName);
                 ext = ext.ToLower();
                 bool check = false;
-                P_rgbType.Visible = false;
 
                 switch (ext)
                 {
@@ -86,7 +87,6 @@ namespace CSharpFort3ImgExtract
                     case ".img":
                     case ".spr":
                         check = DataExtract.ImgSprDecompress(OFD_openImg.FileName, fort3Imgs);
-                        P_rgbType.Visible = true;
                         break;
                     case ".tga":
                         break;
@@ -105,6 +105,11 @@ namespace CSharpFort3ImgExtract
                 else
                 {
                     ImgName = string.Empty;
+                    L_imgSize.Text = "0×0 px";
+
+                    TB_offsetX.Text = "";
+                    TB_offsetY.Text = "";
+                    TB_rgbType.Text = "";
                 }
             }
         }
@@ -268,13 +273,14 @@ namespace CSharpFort3ImgExtract
 
         private void CB_imgBG_DrawItem(object sender, DrawItemEventArgs e)
         {
+            // 배경색 설정 콤보박스내 데이터에 색상이 표시되게 다시 그리기
             e.DrawBackground();
             if (e.Index >= 0)
             {
                 var txt = CB_imgBG.GetItemText(CB_imgBG.Items[e.Index]);
                 var color = (Color)CB_imgBG.Items[e.Index];
                 var r1 = new Rectangle(e.Bounds.Left + 1, e.Bounds.Top + 1,
-                    2 * (e.Bounds.Height - 2), e.Bounds.Height - 2);
+                    2 * (e.Bounds.Height - 2), e.Bounds.Height - 4);
                 var r2 = Rectangle.FromLTRB(r1.Right + 2, e.Bounds.Top,
                     e.Bounds.Right, e.Bounds.Bottom);
                 using (var b = new SolidBrush(color))

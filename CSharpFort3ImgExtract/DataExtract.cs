@@ -147,12 +147,12 @@ namespace CSharpFort3ImgExtract
                     {
                         Fort3Img fort3Img = new Fort3Img();
 
-                        int type = sr.ReadInt32();
-                        if (type == 0)
+                        fort3Img.TypeValue = sr.ReadInt32();
+                        if (fort3Img.TypeValue == 0)
                         {
                             fort3Img.Type = Fort3ImgType.TransparentValueImageI16;
                         }
-                        else if (type == 1)
+                        else if (fort3Img.TypeValue == 1)
                         {
                             fort3Img.Type = Fort3ImgType.RGB565Image;
                         }
