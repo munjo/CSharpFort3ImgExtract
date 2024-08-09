@@ -38,6 +38,8 @@ namespace CSharpFort3ImgExtract
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.P_imgInfo = new System.Windows.Forms.Panel();
+            this.TB_rgbType = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.L_imgSize = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,8 +58,6 @@ namespace CSharpFort3ImgExtract
             this.RTB_hex = new System.Windows.Forms.RichTextBox();
             this.CLB_imgList = new System.Windows.Forms.CheckedListBox();
             this.OFD_openImg = new System.Windows.Forms.OpenFileDialog();
-            this.TB_rgbType = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -172,6 +172,28 @@ namespace CSharpFort3ImgExtract
             this.P_imgInfo.Name = "P_imgInfo";
             this.P_imgInfo.Size = new System.Drawing.Size(669, 25);
             this.P_imgInfo.TabIndex = 2;
+            // 
+            // TB_rgbType
+            // 
+            this.TB_rgbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TB_rgbType.Location = new System.Drawing.Point(346, 2);
+            this.TB_rgbType.Name = "TB_rgbType";
+            this.TB_rgbType.ReadOnly = true;
+            this.TB_rgbType.Size = new System.Drawing.Size(80, 21);
+            this.TB_rgbType.TabIndex = 25;
+            this.TB_rgbType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(270, 6);
+            this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 12);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "RGB값 타입";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // L_imgSize
             // 
@@ -372,28 +394,6 @@ namespace CSharpFort3ImgExtract
             // OFD_openImg
             // 
             this.OFD_openImg.Filter = "포트리스3 이미지|*.i16;*.img;*.spr;";
-            // 
-            // TB_rgbType
-            // 
-            this.TB_rgbType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TB_rgbType.Location = new System.Drawing.Point(346, 2);
-            this.TB_rgbType.Name = "TB_rgbType";
-            this.TB_rgbType.ReadOnly = true;
-            this.TB_rgbType.Size = new System.Drawing.Size(80, 21);
-            this.TB_rgbType.TabIndex = 25;
-            this.TB_rgbType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(270, 6);
-            this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 12);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "RGB값 타입";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 

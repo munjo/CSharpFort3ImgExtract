@@ -138,9 +138,9 @@ namespace CSharpFort3ImgExtract
             int green = value >> 5 & 63;
             int blue = value & 31;
 
-            red = red * 255 / 31;
-            green = green * 255 / 63;
-            blue = blue * 255 / 31;
+            red = red * 8;
+            green = green * 4;
+            blue = blue * 8;
 
             Color result = Color.FromArgb(red, green, blue);
 
@@ -155,9 +155,9 @@ namespace CSharpFort3ImgExtract
             int blue = value & 31;
 
             alpha = alpha * 255;
-            red = red * 255 / 31;
-            green = green * 255 / 31;
-            blue = blue * 255 / 31;
+            red = red * 8;
+            green = green * 8;
+            blue = blue * 8;
 
             Color result = Color.FromArgb(alpha, red, green, blue);
 
@@ -171,10 +171,10 @@ namespace CSharpFort3ImgExtract
             int green = value >> 4 & 15;
             int blue = value & 15;
 
-            alpha = alpha * 255 / 15;
-            red = red * 255 / 15;
-            green = green * 255 / 15;
-            blue = blue * 255 / 15;
+            alpha = alpha * 16;
+            red = red * 16;
+            green = green * 16;
+            blue = blue * 16;
 
             Color result = Color.FromArgb(alpha, red, green, blue);
 
